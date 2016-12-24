@@ -50,7 +50,7 @@ variable "security_groups" {
 
 variable "image_id" {
   description = "AMI ID, this needs to match the region you are running instances on"
-  default     = "ami-f4832f97"
+  default     = "ami-6df8fe7a"
 }
 
 /*

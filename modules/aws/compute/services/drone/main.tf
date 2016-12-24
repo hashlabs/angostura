@@ -20,7 +20,7 @@
  *  db_password = "${var.db_password}"
  *  db_host     = "${var.db_host}"
  *  db_port     = "${var.db_port}"
- *  db_name     = "${var.drone_db_name}"
+ *  db_name     = "${var.db_name}"
  *
  *  key_name                = "${var.key_name}"
  *  iam_instance_profile_id = "${var.iam_instance_profile_id}"
@@ -29,10 +29,10 @@
  *  asg_min_size            = "${var.asg_min_size}"
  *  asg_max_size            = "${var.asg_max_size}"
  *
- *  drone_github_client = "${var.drone_github_client}"
- *  drone_github_secret = "${var.drone_github_secret}"
- *  drone_secret        = "${var.drone_secret}"
- *  drone_server        = "${var.drone_server}"
+ *  github_client = "${var.github_client}"
+ *  github_secret = "${var.github_secret}"
+ *  drone_secret  = "${var.drone_secret}"
+ *  drone_server  = "${var.drone_server}"
  *}
  *```
  */
@@ -104,11 +104,11 @@ variable "desired_count" {
   default     = 1
 }
 
-variable "drone_github_client" {
+variable "github_client" {
   description = "Github App client id"
 }
 
-variable "drone_github_secret" {
+variable "github_secret" {
   description = "Github App secret key"
 }
 
@@ -142,8 +142,8 @@ data "template_file" "drone" {
 
     db_url = "postgres://${var.db_username}:${var.db_password}@${var.db_host}:${var.db_port}/${var.db_name}"
 
-    github_client = "${var.drone_github_client}"
-    github_secret = "${var.drone_github_secret}"
+    github_client = "${var.github_client}"
+    github_secret = "${var.github_secret}"
 
     drone_admin  = "${var.drone_admin}"
     drone_orgs   = "${var.drone_orgs}"
