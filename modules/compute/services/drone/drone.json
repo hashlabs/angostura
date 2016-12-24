@@ -1,0 +1,110 @@
+[
+  {
+    "name": "${container_name}",
+    "image": "drone/drone:0.5",
+    "portMappings": [
+      {
+        "containerPort": 8000,
+        "hostPort": 80
+      }
+    ],
+    "memoryReservation": 250,
+    "cpu": 10,
+    "environment": [
+      {
+        "name": "DATABASE_DRIVER",
+        "value": "postgres"
+      },
+      {
+        "name": "DATABASE_CONFIG",
+        "value": "${db_url}"
+      },
+      {
+        "name": "DRONE_GITHUB",
+        "value": "true"
+      },
+      {
+        "name": "DRONE_GITHUB_CLIENT",
+        "value": "${github_client}"
+      },
+      {
+        "name": "DRONE_GITHUB_SECRET",
+        "value": "${github_secret}"
+      },
+      {
+        "name": "DRONE_OPEN",
+        "value": "true"
+      },
+      {
+        "name": "DRONE_ORGS",
+        "value": "${drone_orgs}"
+      },
+      {
+        "name": "DRONE_ADMIN",
+        "value": "${drone_admin}"
+      },
+      {
+        "name": "DRONE_SECRET",
+        "value": "${drone_secret}"
+      }
+    ],
+    "links": [
+      "${container_name}-sftp:sftp"
+    ],
+    "mountPoints": [
+      {
+        "sourceVolume": "drone-${environment}",
+        "containerPath": "/var/lib/drone"
+      }
+    ],
+    "essential": true
+  },
+  {
+    "name": "${container_name}-agent-1",
+    "image": "drone/drone:0.5",
+    "memoryReservation": 250,
+    "cpu": 10,
+    "environment": [
+      {
+        "name": "DRONE_SERVER",
+        "value": "${drone_server}"
+      },
+      {
+        "name": "DRONE_SECRET",
+        "value": "${drone_secret}"
+      },
+      {
+        "name": "DRONE_TIMEOUT",
+        "value": "25m0s"
+      }
+    ],
+    "command": [
+      "agent"
+    ],
+    "links": [
+      "${container_name}:drone",
+      "${container_name}-sftp:sftp"
+    ],
+    "mountPoints": [
+      {
+        "sourceVolume": "docker-socket-${environment}",
+        "containerPath": "/var/run/docker.sock"
+      }
+    ]
+  },
+  {
+    "name": "${container_name}-sftp",
+    "image": "atmoz/sftp",
+    "memoryReservation": 100,
+    "cpu": 10,
+    "command": [
+      "drone:cache:::cache"
+    ],
+    "mountPoints": [
+      {
+        "sourceVolume": "sftp-${environment}",
+        "containerPath": "/home/drone/cache"
+      }
+    ]
+  }
+]
