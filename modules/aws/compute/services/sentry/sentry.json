@@ -65,7 +65,7 @@
       },
       {
         "name": "SENTRY_SERVER_EMAIL",
-        "value": "sentry@wobe.io"
+        "value": "${sentry_server_email}"
       }
     ],
     "links": [
@@ -142,7 +142,7 @@
       },
       {
         "name": "SENTRY_SERVER_EMAIL",
-        "value": "sentry@wobe.io"
+        "value": "${sentry_server_email}"
       }
     ],
     "links": [
@@ -205,7 +205,7 @@
       },
       {
         "name": "SENTRY_SERVER_EMAIL",
-        "value": "sentry@wobe.io"
+        "value": "${sentry_server_email}"
       }
     ],
     "links": [

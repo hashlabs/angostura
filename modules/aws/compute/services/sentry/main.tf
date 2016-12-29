@@ -128,6 +128,11 @@ variable "sentry_secret_key" {
   description = "Random 32 chars string"
 }
 
+variable "sentry_server_email" {
+  description = "Sentry emails FROM email address"
+  default     = "sentry@hashlabs.com"
+}
+
 variable "github_app_id" {
   description = "Github APP ID"
 }
@@ -160,7 +165,8 @@ data "template_file" "sentry" {
     github_app_id     = "${var.github_app_id}"
     github_api_secret = "${var.github_api_secret}"
 
-    sentry_secret_key = "${var.sentry_secret_key}"
+    sentry_secret_key   = "${var.sentry_secret_key}"
+    sentry_server_email = "${var.sentry_server_email}"
   }
 }
 

@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+* [aws.compute.services.sentry] Exposing SENTRY_SERVER_EMAIL
 * [aws.compute.utils.launch_configuration] Adding swapfile with `user_data`
 * Bastion host module
 
