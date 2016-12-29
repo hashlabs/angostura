@@ -81,7 +81,7 @@
   {
     "name": "redis",
     "image": "redis:3.2",
-    "memoryReservation": 120,
+    "memoryReservation": 180,
     "cpu": 10,
     "mountPoints": [
       {
@@ -156,7 +156,7 @@
   {
     "name": "sentry-cron",
     "image": "hashlabs/sentry:latest",
-    "memoryReservation": 120,
+    "memoryReservation": 180,
     "cpu": 10,
     "environment": [
       {

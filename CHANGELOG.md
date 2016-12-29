@@ -6,6 +6,10 @@
 * [aws.compute.utils.launch_configuration] Adding swapfile with `user_data`
 * Bastion host module
 
+### Changed
+* [aws.compute.services.sentry] memory reservation
+
+
 ## [0.0.2] - 2016-12-29
 ### Added
 * [aws.compute.services.sentry] reducing memory reservation
