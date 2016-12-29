@@ -35,6 +35,8 @@
  *  asg_max_size            = "${var.asg_max_size}"
  *
  *  sentry_secret_key = "${var.sentry_secret_key}"
+ *  github_app_id = "${var.github_app_id}"
+ *  github_app_secret = "${var.github_app_id}"
  *}
  *```
  */
