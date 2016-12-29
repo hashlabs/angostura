@@ -4,6 +4,7 @@
 ### Added
 * [aws.network.vpc] removing `region` variable
 * VPC module
+* Sentry module
 
 ### Changed
 * Launch configuration default ami to match the one in us-east-1
