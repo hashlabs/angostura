@@ -69,7 +69,7 @@ resource "aws_subnet" "public_a" {
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "10.0.0.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "${aws_region.current.name}a"
+  availability_zone       = "${data.aws_region.current.name}a"
 
   tags {
     Name        = "Public-a-${var.environment}"
@@ -83,7 +83,7 @@ resource "aws_subnet" "public_b" {
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "${aws_region.current.name}b"
+  availability_zone       = "${data.aws_region.current.name}b"
 
   tags {
     Name        = "Public-b-${var.environment}"
@@ -97,7 +97,7 @@ resource "aws_subnet" "private_a" {
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = false
-  availability_zone       = "${aws_region.current.name}a"
+  availability_zone       = "${data.aws_region.current.name}a"
 
   tags {
     Name        = "Private-a-${var.environment}"
@@ -111,7 +111,7 @@ resource "aws_subnet" "private_b" {
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "10.0.3.0/24"
   map_public_ip_on_launch = false
-  availability_zone       = "${aws_region.current.name}b"
+  availability_zone       = "${data.aws_region.current.name}b"
 
   tags {
     Name        = "Private-b-${var.environment}"
