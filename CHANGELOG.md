@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## [Unreleased]
+### Added
+* Bastion host module
 
 ## [0.0.2] - 2016-12-29
 ### Added
