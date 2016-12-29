@@ -15,6 +15,7 @@
  *  iam_instance_profile_id = "${var.iam_instance_profile_id}"
  *  security_groups         = "${var.security_groups}"
  *  instance_type           = "${var.instance_type}"
+ *  swap_size               = "2G"
  *}
  *```
  */
@@ -53,6 +54,11 @@ variable "image_id" {
   default     = "ami-6df8fe7a"
 }
 
+variable "swap_size" {
+  description = "The size of the swapfile to be created in the instance"
+  default     = "1G"
+}
+
 /*
  * Resources
  */
@@ -62,6 +68,7 @@ data "template_file" "user_data" {
   vars {
     environment  = "${var.environment}"
     cluster_name = "${var.cluster_name}"
+    swap_size    = "${var.swap_size}"
   }
 }
 

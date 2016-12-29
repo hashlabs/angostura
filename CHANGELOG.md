@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+* [aws.compute.utils.launch_configuration] Adding swapfile with `user_data`
 * Bastion host module
 
 ## [0.0.2] - 2016-12-29

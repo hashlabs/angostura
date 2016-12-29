@@ -12,3 +12,10 @@ DAEMON_MAXFILES=1048576
 # By default we limit the number of open files per container
 OPTIONS="--default-ulimit nofile=1024000:1024000"
 HEREDOC
+
+# Enable Swap
+sudo fallocate -l ${swap_size} /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo "/swapfile   none    swap    sw    0   0" | sudo tee -a /etc/fstab
