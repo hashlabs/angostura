@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+* [aws.network.vpc] removing `region` variable
 * VPC module
 
 ### Changed

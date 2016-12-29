@@ -1,7 +1,7 @@
 /**
  *## Description:
  *
- *VPC module creates a VPC with in the provided AWS region with:
+ *VPC module creates a VPC in the region used in the AWS provider with:
  *
  ** 1 Internet gateway
  ** 1 NAT gateway
@@ -19,7 +19,6 @@
  *  environment = "${var.environment}"
  *
  *  nat_gateway = false
- *  region = "us-east-1"
  *}
  *```
  */
@@ -31,10 +30,6 @@ variable "environment" {
   description = "Environment name"
 }
 
-variable "region" {
-  description = "Region where to place the VPC"
-}
-
 variable "nat_gateway" {
   description = "Conditional to create a NAT Gateway"
   default     = false
@@ -43,6 +38,10 @@ variable "nat_gateway" {
 /*
  * Resources
  */
+data "aws_region" "current" {
+  current = true
+}
+
 resource "aws_vpc" "default" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
@@ -70,7 +69,7 @@ resource "aws_subnet" "public_a" {
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "10.0.0.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "${var.region}a"
+  availability_zone       = "${aws_region.current.name}a"
 
   tags {
     Name        = "Public-a-${var.environment}"
@@ -84,7 +83,7 @@ resource "aws_subnet" "public_b" {
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "${var.region}b"
+  availability_zone       = "${aws_region.current.name}b"
 
   tags {
     Name        = "Public-b-${var.environment}"
@@ -98,7 +97,7 @@ resource "aws_subnet" "private_a" {
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = false
-  availability_zone       = "${var.region}a"
+  availability_zone       = "${aws_region.current.name}a"
 
   tags {
     Name        = "Private-a-${var.environment}"
@@ -112,7 +111,7 @@ resource "aws_subnet" "private_b" {
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "10.0.3.0/24"
   map_public_ip_on_launch = false
-  availability_zone       = "${var.region}b"
+  availability_zone       = "${aws_region.current.name}b"
 
   tags {
     Name        = "Private-b-${var.environment}"
