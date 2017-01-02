@@ -9,6 +9,8 @@
 ### Changed
 * [aws.compute.services.sentry] memory reservation
 
+### Fixed
+* [aws.compute.services.sentry] SMTP_USERNAME variable was missing
 
 ## [0.0.2] - 2016-12-29
 ### Added

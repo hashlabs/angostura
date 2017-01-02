@@ -44,8 +44,8 @@
         "value": "${smtp_port}"
       },
       {
-        "name": "SENTRY_EMAIL_PORT",
-        "value": "${smtp_port}"
+        "name": "SENTRY_EMAIL_USER",
+        "value": "${smtp_username}"
       },
       {
         "name": "GITHUB_APP_ID",
