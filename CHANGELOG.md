@@ -8,6 +8,8 @@
 
 ### Changed
 * [aws.compute.services.sentry] memory reservation
+* [aws.compute.utils.launch_configuration] Now pulls ECS image using
+  `aws_ami`
 
 ### Fixed
 * [aws.compute.services.sentry] SMTP_USERNAME variable was missing

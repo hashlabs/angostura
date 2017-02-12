@@ -49,11 +49,6 @@ variable "security_groups" {
   type        = "list"
 }
 
-variable "image_id" {
-  description = "AMI ID, this needs to match the region you are running instances on"
-  default     = "ami-6df8fe7a"
-}
-
 variable "swap_size" {
   description = "The size of the swapfile to be created in the instance"
   default     = "1G"
@@ -62,6 +57,25 @@ variable "swap_size" {
 /*
  * Resources
  */
+data "aws_ami" "ecs_ami" {
+  most_recent = true
+
+  filter {
+    name   = "owner-alias"
+    values = ["amazon"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "name"
+    values = ["amzn-ami-*-amazon-ecs-optimized"]
+  }
+}
+
 data "template_file" "user_data" {
   template = "${file("${path.module}/user_data.sh")}"
 
@@ -75,7 +89,7 @@ data "template_file" "user_data" {
 resource "aws_launch_configuration" "launch_configuration" {
   name_prefix          = "${var.environment}-"
   iam_instance_profile = "${var.iam_instance_profile_id}"
-  image_id             = "${var.image_id}"
+  image_id             = "${data.aws_ami.ecs_ami.id}"
   instance_type        = "${var.instance_type}"
   key_name             = "${var.key_name}"
   security_groups      = ["${var.security_groups}"]
