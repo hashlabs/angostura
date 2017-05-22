@@ -1,7 +1,7 @@
 [
   {
     "name": "${container_name}",
-    "image": "drone/drone:latest",
+    "image": "drone/drone:0.6",
     "portMappings": [
       {
         "containerPort": 8000,
@@ -65,7 +65,7 @@
   },
   {
     "name": "${container_name}-agent-1",
-    "image": "drone/drone:latest",
+    "image": "drone/drone:0.6",
     "memoryReservation": 250,
     "cpu": 10,
     "environment": [
@@ -76,6 +76,10 @@
       {
         "name": "DRONE_SECRET",
         "value": "${drone_secret}"
+      },
+      {
+        "name": "DRONE_DEBUG",
+        "value": "true"
       },
       {
         "name": "DRONE_TIMEOUT",
