@@ -1,7 +1,7 @@
 [
   {
     "name": "${container_name}",
-    "image": "drone/drone:0.5",
+    "image": "drone/drone:0.6",
     "portMappings": [
       {
         "containerPort": 8000,
