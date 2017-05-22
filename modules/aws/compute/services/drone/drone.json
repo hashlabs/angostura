@@ -61,7 +61,7 @@
   },
   {
     "name": "${container_name}-agent-1",
-    "image": "drone/drone:0.5",
+    "image": "drone/drone:0.6",
     "memoryReservation": 250,
     "cpu": 10,
     "environment": [
