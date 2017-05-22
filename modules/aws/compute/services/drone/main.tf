@@ -33,6 +33,7 @@
  *  github_secret = "${var.github_secret}"
  *  drone_secret  = "${var.drone_secret}"
  *  drone_server  = "${var.drone_server}"
+ *  drone_host  = "${var.drone_host}"
  *}
  *```
  */
@@ -120,6 +121,10 @@ variable "drone_server" {
   description = "Server WebSockets endpoint"
 }
 
+variable "drone_host" {
+  description = "Server domain"
+}
+
 variable "drone_admin" {
   description = "List of admins' Github username"
   default     = "orlando"
@@ -149,6 +154,7 @@ data "template_file" "drone" {
     drone_orgs   = "${var.drone_orgs}"
     drone_secret = "${var.drone_secret}"
     drone_server = "${var.drone_server}"
+    drone_host   = "${var.drone_host}"
   }
 }
 

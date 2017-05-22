@@ -44,6 +44,10 @@
         "value": "${drone_admin}"
       },
       {
+        "name": "DRONE_HOST",
+        "value": "${drone_host}"
+      },
+      {
         "name": "DRONE_SECRET",
         "value": "${drone_secret}"
       }
