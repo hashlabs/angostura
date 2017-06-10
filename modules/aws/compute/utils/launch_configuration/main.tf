@@ -95,6 +95,12 @@ resource "aws_launch_configuration" "launch_configuration" {
   security_groups      = ["${var.security_groups}"]
   user_data            = "${data.template_file.user_data.rendered}"
 
+  root_block_device {
+    device_name = "/dev/sda"
+    volume_type = "gp2"
+    volume_size = 15
+  }
+
   lifecycle {
     create_before_destroy = true
   }
