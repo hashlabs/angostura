@@ -15,6 +15,7 @@
  *module "drone" {
  *  source      = "../services/drone"
  *  environment = "${var.environment}"
+ *  image       = "${var.image}"
  *
  *  db_username = "${var.db_username}"
  *  db_password = "${var.db_password}"
@@ -43,6 +44,11 @@
  */
 variable "environment" {
   description = "Environment name"
+}
+
+variable "image" {
+  description = "Docker image name"
+  default     = "drone/drone:0.7"
 }
 
 variable "db_host" {
@@ -144,6 +150,7 @@ data "template_file" "drone" {
   vars {
     container_name = "drone-${var.environment}"
     environment    = "${var.environment}"
+    image          = "${var.image}"
 
     db_url = "postgres://${var.db_username}:${var.db_password}@${var.db_host}:${var.db_port}/${var.db_name}"
 

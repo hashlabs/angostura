@@ -7,6 +7,7 @@
 * Bastion host module
 
 ### Changed
+* [aws.compute.services.drone] Exposing Drone's Docker image
 * [aws.compute.services.sentry] memory reservation
 * [aws.compute.utils.launch_configuration] Now pulls ECS image using
   `aws_ami`
