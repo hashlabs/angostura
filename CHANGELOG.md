@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+* [aws.compute.utils.launch_configuration] Using overlay2 as Docker storage driver
 * [aws.compute.utils.launch_configuration] Adding `root_block_device`
 * [aws.compute.services.sentry] Exposing SENTRY_SERVER_EMAIL
 * [aws.compute.utils.launch_configuration] Adding swapfile with `user_data`

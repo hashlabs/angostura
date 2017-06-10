@@ -1,5 +1,6 @@
 #!/bin/bash
 echo ECS_CLUSTER=${cluster_name} > /etc/ecs/ecs.config
+echo DOCKER_STORAGE_OPTIONS="--storage-driver overlay2" > /etc/sysconfig/docker-storage
 export ENVIRONMENT=${environment}
 cat << HEREDOC | sudo tee /etc/sysconfig/docker
 # The max number of open files for the daemon itself, and all
@@ -19,3 +20,6 @@ sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 echo "/swapfile   none    swap    sw    0   0" | sudo tee -a /etc/fstab
+
+# Restart Docker
+service docker restart
