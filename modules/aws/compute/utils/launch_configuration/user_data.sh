@@ -23,3 +23,6 @@ echo "/swapfile   none    swap    sw    0   0" | sudo tee -a /etc/fstab
 
 # Restart Docker
 service docker restart
+
+# Install apps
+sudo yum -y install htop
