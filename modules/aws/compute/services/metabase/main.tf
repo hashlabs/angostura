@@ -108,7 +108,7 @@ data "template_file" "metabase" {
 
   vars {
     container_name = "metabase-${var.environment}"
-    image          = "${var.environment}"
+    image          = "${var.image}"
 
     db_username = "${var.db_username}"
     db_password = "${var.db_password}"
